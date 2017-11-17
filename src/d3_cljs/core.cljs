@@ -2,4 +2,5 @@
   )
 
 (defn hello [who]
-  (str "Hello, " who "!"))
+  (str "Hello, " who "!")
+  "ret value")
