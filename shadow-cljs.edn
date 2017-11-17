@@ -1,0 +1,16 @@
+{:dependencies
+ [[cider/cider-nrepl "0.16.0-SNAPSHOT"]]
+
+ :source-paths
+ ["src"]
+
+ :builds
+ {:d3-cljs {:id        :library
+            :target    :node-library
+            :output-to "out/d3_cljs/index.js"
+            :exports   {:hello d3-cljs.core/hello}
+            }
+
+  :nrepl
+  {:port 8202}
+  }}
