@@ -1,13 +1,12 @@
 {
   "devDependencies": {
-    "shadow-cljs": "^2.0.85"
+    "shadow-cljs": "^2.0.88"
   },
   "name": "d3-cljs",
   "description": "* d3-cljs",
   "version": "0.0.1",
   "main": "src/d3_cljs/index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

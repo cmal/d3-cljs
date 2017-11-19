@@ -1,6 +1,8 @@
 target/
 node_modules/
 out/
-
+*#
 *.org
 .DS_Store
+
+src/cbuild.clj

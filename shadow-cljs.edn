@@ -6,9 +6,10 @@
 
  :builds
  {:d3-cljs {:id        :library
-            :target    :node-library
+            :target    :node-library ;;cbuild/custom
             :output-to "out/d3_cljs/index.js"
-            :exports   {:hello d3-cljs.core/hello}
+            :exports   {:hello d3-cljs.core/hello
+                        }
 
             }}
 
