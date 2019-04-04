@@ -187,3 +187,25 @@
       (is (nil? (a/array-deviation [] inc)))
       (is (nil? (a/array-deviation [nil] inc)))
       (is (nil? (a/array-deviation [nil nil 1] inc))))))
+
+
+(deftest array-scan-test
+  (testing "scan returns the index of the least element"
+    (is (= 2 (a/array-scan [5 2 1 3 4])))
+    (is (= 4 (a/array-scan [5 4 2 3 1]))))
+  (testing "scan returns nil when array is empty"
+    (is (nil? (a/array-scan [])))
+    #_(is (nil? (a/array-scan nil))))
+  (testing "scan returns nil when array contains ONLY incomparable values"
+    (is (nil? (a/array-scan ["1" nil "2" "4"])))
+    (is (nil? (a/array-sacn [nil]))))
+
+  (testing "scan returns least index using the given comparator"
+    (is (= 0 (a/array-scan [5 1 2 3 4] >)))
+    (is (= 2 (a/array-scan [1 3 5 2 4] #(compare %1 %2)))))
+  (testing "scan returns nil when array is empty and given a comparator"
+    (is (nil? (a/array-scan [] >)))
+    #_(is (nil? (a/array-scan nil >))))
+  (testing "scan returns nil when array contains ONLY incomparable values with comparator when given a comparator"
+    (is (nil? (a/array-scan ["1" nil "2" "4"] >)))
+    (is (nil? (a/array-scan [nil] >)))))

@@ -162,3 +162,27 @@ An optional function `f` may be specified, which is equivalent to calling (map f
 
 
 ;; ==== End Statistics ====
+
+
+(comment
+  {:d3
+   "Performs a linear scan of the specified array, returning the index of the least element according to the specified comparator. If the given array contains no comparable elements (i.e., the comparator returns NaN when comparing each element to itself), returns undefined. If comparator is not specified, it defaults to ascending. For example:
+
+var array = [{foo: 42}, {foo: 91}];
+d3.scan(array, function(a, b) { return a.foo - b.foo; }); // 0
+d3.scan(array, function(a, b) { return b.foo - a.foo; }); // 1
+This function is similar to min, except it allows the use of a comparator rather than an accessor and it returns the index instead of the accessed value. See also bisect."
+   :d3-cljs
+   "Performs a linear scan of the specified array, returning the index of the least element according to the specified comparator. If the given array contains no comparable elements (i.e., the comparator returns nil when comparing each element to itself), returns nil. If comparator is not specified, it defaults to ascending. For example:
+
+(def arr [{:foo 42} {:foo 91}])
+(array-scan arr #(- (:foo %2) (:foo %1)) ;; => 0
+(array-scan arr #(- (:foo %1) (:foo %2)) ;; => 1
+This function is similar to min, except it allows the use of a comparator rather than an function and it returns the index instead of the accessed value. See also bisect."})
+
+(defn array-scan
+  ([v]
+   (let [v1 (filter number? v)])
+   (when-not (empty? v1)
+     (apply min-key v1 (range (count v1)))))
+  ([v comparator]))
